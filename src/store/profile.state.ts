@@ -1,5 +1,6 @@
 import { createProfile, Profile } from "../types/Profile";
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { loadProfile } from "../api/profile.api";
 
 interface ProfileState {
   isLoading: boolean;
@@ -7,6 +8,7 @@ interface ProfileState {
   isSaving: boolean;
   profile: Profile;
   connectedWallet: string;
+  error: string;
 }
 
 const initialState: ProfileState = {
@@ -15,7 +17,15 @@ const initialState: ProfileState = {
   isSaving: false,
   connectedWallet: "",
   profile: createProfile(),
+  error: "",
 };
+
+export const fetchProfile = createAsyncThunk<Profile, string>(
+  "profile/fetchOne",
+  async (wallet: string) => {
+    return await loadProfile(wallet);
+  }
+);
 
 export const profileSlice = createSlice({
   name: "profile",
@@ -45,6 +55,19 @@ export const profileSlice = createSlice({
     loadingEnd: (state) => {
       state.isLoading = false;
     },
+    setError: (state, action: PayloadAction<string>) => {
+      state.error = action.payload;
+    },
+  },
+  extraReducers(builder) {
+    builder.addCase(
+      fetchProfile.fulfilled,
+      (state, action: PayloadAction<Profile>) => {
+        state.profile = {
+          ...action.payload,
+        };
+      }
+    );
   },
 });
 
