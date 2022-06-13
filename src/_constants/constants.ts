@@ -1,0 +1,2 @@
+export const MAX_LENGTH_PERSONAL_LINKS = 7;
+export const MAX_LENGTH_SOCIAL_LINKS = 4;
