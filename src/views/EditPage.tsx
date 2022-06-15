@@ -3,6 +3,8 @@ import { Menu } from "../components/menu/Menu";
 import { editSteps } from "../components/edit/edit.steps";
 import { EditCard } from "../components/edit/EditCard";
 import { useNavigate } from "react-router-dom";
+import { MenuMobile } from "../components/menu/MenuMobile";
+import React from "react";
 
 export function EditPage() {
   const navigate = useNavigate();
@@ -18,9 +20,10 @@ export function EditPage() {
         width: "100%",
         minHeight: "100%",
         background:
-          "linear-gradient(16deg, rgba(0,0,0,1) 0%, rgba(29,25,55,1) 51%, rgba(27,20,77,1) 100%)",
+          "linear-gradient(16deg, rgba(0,0,0,1) 0%, rgba(29,25,55,1) 25%, rgba(27,20,77,1) 100%)",
       })}
     >
+      <MenuMobile />
       <Container fluid={true} style={{ padding: "24px", position: "relative" }}>
         <Grid gutter={24}>
           <Grid.Col xs={0} md={3}>

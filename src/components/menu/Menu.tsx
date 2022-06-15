@@ -1,7 +1,14 @@
+import { useMediaQuery } from "@mantine/hooks";
+import { useState } from "react";
+import { Box, Button } from "@mantine/core";
 import { MenuContent } from "./MenuContent";
-import { Box } from "@mantine/core";
 
 export function Menu() {
+  const matches = useMediaQuery("(min-width: 992px)");
+  const [opened, setOpened] = useState(false);
+
+  if (!matches) return null;
+
   return (
     <Box
       sx={(theme) => ({
@@ -11,17 +18,11 @@ export function Menu() {
         left: 0,
         display: "flex",
         alignItems: "center",
-        height: "100%",
-
-        "@media (max-width: 992px)": {
-          right: 0,
-          zIndex: 100,
-        },
       })}
     >
       <Box
         sx={(theme) => ({
-          width: "200px",
+          width: opened ? "200px" : "60px",
           height: 300,
           background: "white",
           borderTopRightRadius: "25px",
@@ -29,15 +30,12 @@ export function Menu() {
           paddingTop: "25px",
           paddingBottom: "25px",
 
-          "@media (max-width: 992px)": {
-            width: "100%",
-            height: "100%",
-            borderTopRightRadius: 0,
-            borderBottomRightRadius: 0,
-          },
+          transition: "width 0.3s ease-in",
         })}
       >
         <MenuContent />
+
+        <Button onClick={() => setOpened(!opened)}>Toggle</Button>
       </Box>
     </Box>
   );
