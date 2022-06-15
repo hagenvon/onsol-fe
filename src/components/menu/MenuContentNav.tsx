@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { editSteps } from "../edit/edit.steps";
 import { UnstyledButton } from "@mantine/core";
 
-export function SidebarContentNav() {
+export function MenuContentNav() {
   const navigate = useNavigate();
 
   const navItems = editSteps.map((it) => {

@@ -1,5 +1,5 @@
 import { Box, Button, Container, Grid, Stack } from "@mantine/core";
-import { Sidebar } from "../components/sidebar/Sidebar";
+import { Menu } from "../components/menu/Menu";
 import { editSteps } from "../components/edit/edit.steps";
 import { EditCard } from "../components/edit/EditCard";
 import { useNavigate } from "react-router-dom";
@@ -24,7 +24,7 @@ export function EditPage() {
       <Container fluid={true} style={{ padding: "24px", position: "relative" }}>
         <Grid gutter={24}>
           <Grid.Col xs={0} md={3}>
-            <Sidebar />
+            <Menu />
           </Grid.Col>
           <Grid.Col xs={12} md={6}>
             <Stack spacing={24}>{sections}</Stack>

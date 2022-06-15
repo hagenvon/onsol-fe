@@ -1,7 +1,7 @@
-import { SidebarContent } from "./SidebarContent";
+import { MenuContent } from "./MenuContent";
 import { Box } from "@mantine/core";
 
-export function Sidebar() {
+export function Menu() {
   return (
     <Box
       sx={(theme) => ({
@@ -37,7 +37,7 @@ export function Sidebar() {
           },
         })}
       >
-        <SidebarContent />
+        <MenuContent />
       </Box>
     </Box>
   );
